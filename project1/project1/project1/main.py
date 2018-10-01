@@ -51,7 +51,7 @@ class myClass:
         output_file.write(str(self.num_row)+' '+str(self.num_col)+'\n')
         for i in range(self.num_row):
             for j in range(self.num_col):
-                output_file.write(str(my_long_list[i*self.num_col+j])+' ')
+                output_file.write('{0:8.2f} '.format(my_long_list[i*self.num_col+j]))
             output_file.write('\n')
         output_file.write(str(quickSortObject.comparison_count)+' '+str(quickSortObject.assignment_count))
         output_file.close()
@@ -76,7 +76,7 @@ class myClass:
         output_file.write(str(self.num_row)+' '+str(self.num_col)+'\n')
         for i in range(self.num_row):
             for j in range(self.num_col):
-                output_file.write(str(my_local_copy[i][j])+' ')
+                output_file.write('{0:8.2f} '.format(my_local_copy[i][j]))
             output_file.write('\n')
         output_file.write(str(quickSortObject.comparison_count)+' '+str(quickSortObject.assignment_count))
         output_file.close()
@@ -84,16 +84,23 @@ class myClass:
     def operate(self):
         if(self.readFile()):
             # the matrix is read, now perform the task mentioned in the assignment
+            if DEBUG_HELPER:
+                print("Running Method1 function")
             self.method1()
 
+            if DEBUG_HELPER:
+                print("Running Method2 function")
             self.method2()
         else:
             print('Unable to read the matrix. Please follow the error message')
             return
 
 def main():
-    Tk().withdraw()
-    filename = askopenfilename()
+    # Tk().withdraw()
+    # filename = askopenfilename()
+    if DEBUG_HELPER:
+        print("DEBUG MODE ON: Debug outputs may be seen")
+    filename = "input.txt"
     c = myClass(filename)
     c.operate()
 

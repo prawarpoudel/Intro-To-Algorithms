@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-from tkinter import Tk
-from tkinter.filedialog import askopenfilename
+# from tkinter import Tk
+# from tkinter.filedialog import askopenfilename
 
 from helper import *
 
@@ -23,6 +23,7 @@ class myClass:
             self.num_row = row_col[0]
             self.num_col = row_col[1]
             
+            file_handle.close()
             # put the values in the matrix from the my_values list
             for each_lines in lines[1:]:
                 self.my_matrix.append([float(val) for val in each_lines.split(' ')])

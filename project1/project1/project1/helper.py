@@ -33,6 +33,25 @@ class sortEngine:
         self.ASSIGN(b_l,a_l)
         self.ASSIGN(a_l,c)
 
+    def findMedian(self,array):
+        if not len(array)==3:
+            print("Less than 3 elements: Impossible to find median")
+
+        if not self.LT(array[0],array[1]):
+            if not self.LT(array[1],array[2]):
+                return 1
+            elif not self.GT(array[0],array[2]):
+                return 0
+            else:
+                return 2
+        else:
+            if not self.LT(array[0],array[2]):
+                return 0
+            elif not self.LT(array[2],array[1]):
+                return 1
+            else:
+                return 2
+
     def PARTITION_2(self,array,left,right):
         old_comp_count = self.comparison_count
         index = left
@@ -60,7 +79,7 @@ class sortEngine:
 
         return index
 
-    def PARTITION(self,array,left,right):
+    def PARTITION_1(self,array,left,right):
         i = left+1
         j = right
 
@@ -68,9 +87,11 @@ class sortEngine:
 
         while(i<=j):
             if not self.GT(array[i],array[left]):
-                i+=1
+                i+=1                
             elif not self.LT(array[j],array[left]):
                 j-=1
+                # while j<=right and j>=left and not self.LT(array[j],array[left]):
+                #     j-=1
             else:
                 # make a list and pass, since list is mutable
                 a_l = [array[i]]

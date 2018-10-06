@@ -54,7 +54,7 @@ class myClass:
             for j in range(self.num_col):
                 output_file.write('{0:8.2f} '.format(my_long_list[i*self.num_col+j]))
             output_file.write('\n')
-        output_file.write(str(quickSortObject.comparison_count)+' '+str(quickSortObject.assignment_count))
+        output_file.write('Comparison Count:= '+str(quickSortObject.comparison_count)+'\nAssignment Count:= '+str(quickSortObject.assignment_count))
         output_file.close()
 
     def method2(self):
@@ -79,7 +79,7 @@ class myClass:
             for j in range(self.num_col):
                 output_file.write('{0:8.2f} '.format(my_local_copy[i][j]))
             output_file.write('\n')
-        output_file.write(str(quickSortObject.comparison_count)+' '+str(quickSortObject.assignment_count))
+        output_file.write('Comparison Count:= '+str(quickSortObject.comparison_count)+'\nAssignment Count:= '+str(quickSortObject.assignment_count))
         output_file.close()
 
     def operate(self):

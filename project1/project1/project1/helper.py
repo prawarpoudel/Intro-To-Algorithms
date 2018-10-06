@@ -1,7 +1,7 @@
 # this is the helper function that has function names defined to perform some tasks as described in the 
 # requirement
 
-DEBUG_HELPER = True
+DEBUG_HELPER = False
 
 class sortEngine:
 
@@ -79,6 +79,130 @@ class sortEngine:
 
         return index
 
+    def PARTITION(self,array,left,right):
+        # here we will take the middle element as the pivot,
+        # swap the element with the first element and perform the same operation
+        # the benefit as compared to partition_1 and partition_2 is that it provides
+        # .. more dynamics
+        midIndex = (right+left)//2
+
+        # swap
+        a_l = [array[left]]
+        b_l = [array[midIndex]]
+        self.SWAP(a_l,b_l)
+        array[left] = a_l[0]
+        array[midIndex] = b_l[0]
+
+        old_comp_count = self.comparison_count
+        index = left
+        for i in range(left,right):
+            if self.LT(array[i],array[right]):
+                # make a list and pass, since list is mutable
+                a_l = [array[i]]
+                b_l = [array[index]]
+                self.SWAP(a_l,b_l)
+                array[i] = a_l[0]
+                array[index] = b_l[0]
+                index+=1
+
+        # make a list and pass, since list is mutable
+        a_l = [array[right]]
+        b_l = [array[index]]
+        self.SWAP(a_l,b_l)
+        array[right] = a_l[0]
+        array[index] = b_l[0]
+
+        if DEBUG_HELPER:
+            print("Partition: Num of Elements: {}, Total Comp: {}, Comp Here: {}".format(right-left+1,self.comparison_count,self.comparison_count-old_comp_count))
+            if self.comparison_count-old_comp_count>=(right-left+1):
+                print("Large no of comparison on: {}",array[left:right+1])
+
+        return index
+
+    # based on method2 of slide, and some modification
+    def PARTITION_5(self,array,left,right):
+        # here we will take the middle element as the pivot,
+        # swap the element with the first element and perform the same operation
+        # the benefit as compared to partition_1 and partition_2 is that it provides
+        # .. more dynamics
+        midIndex = (right+left)//2
+
+        # swap
+        a_l = [array[left]]
+        b_l = [array[midIndex]]
+        self.SWAP(a_l,b_l)
+        array[left] = a_l[0]
+        array[midIndex] = b_l[0]
+
+        i = left+1
+        j = right
+
+        old_comp_count = self.comparison_count
+
+        while(i<=j):
+            while self.LT(array[left],array[j]):
+                j-=1              
+            while (i<=j) and (not self.GT(array[i],array[left])):
+                i+=1
+            if(i<=j):                        
+                # make a list and pass, since list is mutable
+                a_l = [array[i]]
+                b_l = [array[j]]
+                self.SWAP(a_l,b_l)
+                array[i] = a_l[0]
+                array[j] = b_l[0]
+                j-=1
+                i+=1
+        
+        # make a list and pass, since list is mutable
+        a_l = [array[left]]
+        b_l = [array[j]]
+        self.SWAP(a_l,b_l)
+        array[left] = a_l[0]
+        array[j] = b_l[0]
+
+        if DEBUG_HELPER:
+            print("Partition: Num of Elements: {}, Total Comp: {}, Comp Here: {}".format(right-left+1,self.comparison_count,self.comparison_count-old_comp_count))
+            if self.comparison_count-old_comp_count>=(right-left+1):
+                print("Large no of comparison on: {}",array[left:right+1])
+        return j
+
+    # based on method2 of slide, and some modification
+    def PARTITION_4(self,array,left,right):
+        i = left+1
+        j = right
+
+        old_comp_count = self.comparison_count
+
+        while(i<=j):
+            while self.LT(array[left],array[j]):
+                j-=1              
+            while (i<=j) and (not self.GT(array[i],array[left])):
+                i+=1
+            if(i<=j):                        
+                # make a list and pass, since list is mutable
+                a_l = [array[i]]
+                b_l = [array[j]]
+                self.SWAP(a_l,b_l)
+                array[i] = a_l[0]
+                array[j] = b_l[0]
+                j-=1
+                i+=1
+        
+        # make a list and pass, since list is mutable
+        a_l = [array[left]]
+        b_l = [array[j]]
+        self.SWAP(a_l,b_l)
+        array[left] = a_l[0]
+        array[j] = b_l[0]
+
+        if DEBUG_HELPER:
+            print("Partition: Num of Elements: {}, Total Comp: {}, Comp Here: {}".format(right-left+1,self.comparison_count,self.comparison_count-old_comp_count))
+            if self.comparison_count-old_comp_count>=(right-left+1):
+                print("Large no of comparison on: {}",array[left:right+1])
+        return j
+
+    # based on method2 of slide
     def PARTITION_1(self,array,left,right):
         i = left+1
         j = right
@@ -87,12 +211,10 @@ class sortEngine:
 
         while(i<=j):
             if not self.GT(array[i],array[left]):
-                i+=1                
+                i+=1              
             elif not self.LT(array[j],array[left]):
                 j-=1
-                # while j<=right and j>=left and not self.LT(array[j],array[left]):
-                #     j-=1
-            else:
+            else:                        
                 # make a list and pass, since list is mutable
                 a_l = [array[i]]
                 b_l = [array[j]]
@@ -117,7 +239,7 @@ class sortEngine:
 
     def quick_sort(self,array,left,right):
         if(left<right):
-            pivot = self.PARTITION_2(array,left,right)
+            pivot = self.PARTITION(array,left,right)
             self.quick_sort(array,left,pivot-1)
             self.quick_sort(array,pivot+1,right)
         return

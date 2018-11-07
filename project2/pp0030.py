@@ -9,7 +9,14 @@
 from bstHelper import *
 
 if __name__=='__main__':
+	
 	filename = 'input.txt'
 
 	my_bst = bst()
 	my_bst.read_file(filename)
+	my_bst.optimalBST()
+	
+	# open the file in write mode
+	f = open('pp0030.txt','w')
+	my_bst.printDP_toFile(f)
+	my_bst.print_BST(f)

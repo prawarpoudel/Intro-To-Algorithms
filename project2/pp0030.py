@@ -6,4 +6,10 @@
 # .. the first line contains the number of items (keys)
 # .. each line thereafter contains the number of times they are seached
 
+from bstHelper import *
+
 if __name__=='__main__':
+	filename = 'input.txt'
+
+	my_bst = bst()
+	my_bst.read_file(filename)

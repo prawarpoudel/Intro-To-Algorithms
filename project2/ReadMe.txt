@@ -1,3 +1,32 @@
+Optimal Binary Search Tree:
+=================================
+The source code for this project are mentioned in files:
+	-> pp0030.py
+	-> bstHelper.py
+
+pp0030.py is the main file which makes use of bstHelper.py. All the important stuffs are in bstHelper.py
+
+Operation:
+==================================
+-> The file "input.txt" is read by the main function in "pp0030.py"
+-> It operates on the data to create the optimal binary search tree using the dynamic programming approach
+-> Functions called from "bstHelper.py" will print the final dp-table to the file named "pp0030.txt"
+-> A function to print the optimal binary tree in the windows directory format is also implemented which will then print the optimal-bst in the same file.
+
+Sample Input:
+=================================
+8
+10
+20
+40
+30
+10
+20
+40
+30
+
+Sample Output:
+=================================
 Table:
  ----|         01|         02|         03|         04|         05|         06|         07|         08|
    01|     10(01)|     40(02)|    110(03)|    170(03)|    200(03)|    270(03)|    390(04)|    480(04)|
@@ -20,3 +49,4 @@ Binary Tree:
 			 5
 			 -
 		 8
+

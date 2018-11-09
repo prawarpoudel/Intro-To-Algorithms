@@ -135,11 +135,26 @@ class bst:
 	def print_tree(self,i,j,space_needed,f):
 		if i<=j:
 			for sp in range(space_needed):
-				f.write(' ')
+				f.write('\t')
 			f.write('{0:2d}\n'.format(self.optimal_root[i][j]))
 			space_needed += 1
-			self.print_tree(i,self.optimal_root[i][j]-1,space_needed,f)
-			self.print_tree(self.optimal_root[i][j]+1,j,space_needed,f)
+
+			hasLeftChild = True if (i<=self.optimal_root[i][j]-1) else False
+			hasRightChild = True if (self.optimal_root[i][j]+1<=j) else False
+
+			if hasLeftChild:
+				self.print_tree(i,self.optimal_root[i][j]-1,space_needed,f)
+			elif hasRightChild:
+				for sp in range(space_needed):
+					f.write('\t')
+				f.write(' -\n')
+
+			if hasRightChild:
+				self.print_tree(self.optimal_root[i][j]+1,j,space_needed,f)
+			elif hasLeftChild:
+				for sp in range(space_needed):
+					f.write('\t')
+				f.write(' -\n')
 
 	def print_BST(self,f):
 		'''
@@ -152,4 +167,5 @@ class bst:
 			print('The root matrix is not found. Please check')
 			return False
 
+		f.write('Binary Tree:\n')
 		self.print_tree(1,self.num_keys,0,f)

@@ -1,7 +1,7 @@
 import os.path
 import sys
 
-debug = True
+debug = False
 class bst:
 	def read_file(self,filename):
 		'''

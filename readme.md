@@ -14,10 +14,63 @@ Any algorithm course starts with the theoritical definitions of Growth of Functi
 One important thing to keep in mind as a student is the following sequencee. While analyzing algorithms, this would provide a shorter path to arrange the given growth rates from slowest to faster (although at time it will fail, so you need to use *Limit Rule* to verify).
 
 *Constant << Logarithmic << Polynomial<Exponential << Factorial << n power n*  
+  
+The above order of functions show the relative order of function in increasing order of complexity. It is, however, by no means a definitive indicator that any functions should follow the given order.
 
-## First Things:
+## First Things:  
 
+**Searching**  
 
+### I:  
+
+The first algorithm that I learnt was searching. First searching would always be in a random collection of data. Since random collection have no ordering (thus the name random), a simple search should be done where you start at the first element of the array or collection, check to see if that is what you want. If it is what you want, return with the information on how to find the element item again. If not, move on to the next one.  
+
+I have implemented this in a fully runnable python program with a random collection (I have taken a list of integers). Some extra stuffs have been added for obvious correctness verificaiton.
+
+```python
+# This is the simple search code for GIT repo.
+
+# This is random library
+import random	
+def simple_search(myList,key):
+	'''
+	This function takes a list and an element.
+	If the element is in the list, it returns the Index of the item in list
+		else it returns -1
+	'''
+	n=len(myList)
+	for i in range(n):
+		if myList[i]==key:
+			return i
+	return -1
+
+def verify(myList,index,key):
+	'''
+	This function verifies the operation of searching is correct
+	'''
+	if index<0:
+		return "Not Found in Array"
+	if myList[index]==key:
+		return True
+	else:
+		return False
+
+if __name__=="__main__":
+	num_elements = random.randint(1,101)
+	myList = random.sample(range(num_elements),num_elements);
+
+	key_to_search = random.randint(0,num_elements-1)
+	index_returned =simple_search(myList,key_to_search)	#our answer is already in index_returned
+
+	print("Found {} at index {} in array {}".format(key_to_search,index_returned,myList))
+
+	# folllwing does the checking
+	if verify(myList,index_returned,key_to_search)==True:
+		print("The algorithm works correctly")
+	else:
+		print("Algo Not working")
+```
+ 
 ## Project 1:  
 **Project 1** mainly consists of two classes, namely  
  *sortEngine* (inside file helper.py) and  

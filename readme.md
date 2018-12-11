@@ -1,5 +1,11 @@
 # Description:  
 Theis repository contains the software implementations of all the algorithms that I, as a student, studied while my time at UAH for undergraduate course "Intro to Design and Analysis of Algorithms". I have presented here more practical side of the course. By this I mean, I have presented implementations of the studied algorithms rather than the acutal theoritical explanations of the concepts. Although, I have to admit that I might as well present some theoritical explanations as well.
+
+I might add some extra coding practises that are helpful at the end, after the section **Project2** ends. Lets see.
+
+A discretion advise to all is that this is not supposed to be a single stop for solution to assignments for others, but is intended to serve as a referral place for myself. The materials presented here, although, are hand-typed by me, do (may) not belong to me.
+
+
 ## Project 1:  
 **Project 1** mainly consists of two classes, namely  
  *sortEngine* (inside file helper.py) and  

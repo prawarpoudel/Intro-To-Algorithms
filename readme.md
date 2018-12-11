@@ -1,5 +1,5 @@
 # Description:  
-This folder contains multiple projects identified by folder names. Following presents the description of each of the projects in brief.  
+Theis repository contains the software implementations of all the algorithms that I, as a student, studied while my time at UAH for undergraduate course "Intro to Design and Analysis of Algorithms". I have presented here more practical side of the course. By this I mean, I have presented implementations of the studied algorithms rather than the acutal theoritical explanations of the concepts. Although, I have to admit that I might as well present some theoritical explanations as well.
 ## Project 1:  
 **Project 1** mainly consists of two classes, namely  
  *sortEngine* (inside file helper.py) and  

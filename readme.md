@@ -11,6 +11,13 @@ A discretion advise to all is that this is not supposed to be a single stop for 
   
 Any algorithm course starts with the theoritical definitions of Growth of Functions. There are basically six-ways of expressing the growth of functions (as I have been taught as of now). Bit-O, Bit-\theta, and Bit-\omega and the lowercase versions of each of them. There are a lot of materials online that explains these concepts in detail. Please refer to one of them if you are some one who is not me. For myself, I would refer to [this line for quick refresher](https://cathyatseneca.gitbooks.io/data-structures-and-algorithms/content/analysis/notations.html) and [this link for another refresher](https://stackoverflow.com/questions/1364444/difference-between-big-o-and-little-o-notation).
 
+One important thing to keep in mind as a student is the following sequencee. While analyzing algorithms, this would provide a shorter path to arrange the given growth rates from slowest to faster (although at time it will fail, so you need to use *Limit Rule* to verify).
+
+*Constant << Logarithmic << Polynomial<Exponential << Factorial << n power n*  
+
+## First Things:
+
+
 ## Project 1:  
 **Project 1** mainly consists of two classes, namely  
  *sortEngine* (inside file helper.py) and  

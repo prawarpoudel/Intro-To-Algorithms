@@ -130,6 +130,16 @@ if __name__=="__main__":
 	else:
 		print("Algo Not working")
 ```
+
+An easier way to remember the complexity of Binary Seach algorithm is to watch that the array or our search space is divided into two halves every iteration. This makes it go for log2(length of array) time. Thus it is log2(n) algorithm.
+
+### **Sorting**
+
+Another indspensible part of algorithms study is the study of sorting algorithm. Following presents the sorting algorithms that we studied. 
+
+### I:
+[TODO]
+
 ## Project 1:  
 **Project 1** mainly consists of two classes, namely  
  *sortEngine* (inside file helper.py) and  

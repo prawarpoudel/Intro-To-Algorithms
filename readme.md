@@ -138,7 +138,41 @@ An easier way to remember the complexity of Binary Seach algorithm is to watch t
 Another indspensible part of algorithms study is the study of sorting algorithm. Following presents the sorting algorithms that we studied. 
 
 ### I:
-[TODO]
+
+The basic of all the sorting is Selection Sort. This would be the sorting algorithm that we might come up with when we wrote our first sorting algorithm. Basically, what is done here is that we find the minimum item from the list and place it in the starting position. We do this operation for as many times as there are elements in the array -1 each time leaving out the first element from the list. eg. a[1........n],a[2....n],a[3.....n] etc  
+
+```python
+import random
+
+def selectionSort(myList):
+	n = len(myList)
+
+	for i in range(n-1):
+		c_index = i
+		for j in range(i+1,n):
+			if myList[j]<myList[c_index]:
+				c_index = j
+		
+		# swap the item in c_index and i
+		temp = myList[c_index]
+		myList[c_index] = myList[i]
+		myList[i] = temp
+
+	return myList
+
+
+if __name__=="__main__":
+	num_elements = random.randint(1,101)
+	myList = random.sample(range(num_elements),num_elements);
+
+	print("The un-sorted array is :")
+	print(myList)
+	myList = selectionSort(myList)
+	print("The sorted array is :")
+	print(myList)
+```
+
+### II:
 
 ## Project 1:  
 **Project 1** mainly consists of two classes, namely  

@@ -139,7 +139,7 @@ Another indspensible part of algorithms study is the study of sorting algorithm.
 
 ### I:
 
-The basic of all the sorting is Selection Sort. This would be the sorting algorithm that we might come up with when we wrote our first sorting algorithm. Basically, what is done here is that we find the minimum item from the list and place it in the starting position. We do this operation for as many times as there are elements in the array -1 each time leaving out the first element from the list. eg. a[1........n],a[2....n],a[3.....n] etc  
+The basic of all the sorting is **Selection Sort**. This would be the sorting algorithm that we might come up with when we wrote our first sorting algorithm. Basically, what is done here is that we find the minimum item from the list and place it in the starting position. We do this operation for as many times as there are elements in the array -1 each time leaving out the first element from the list. eg. a[1........n],a[2....n],a[3.....n] etc  
 
 ```python
 import random
@@ -171,8 +171,40 @@ if __name__=="__main__":
 	print("The sorted array is :")
 	print(myList)
 ```
+Selection Sort is O(n^2) in average.
 
 ### II:
+
+Following the same idea as in selection sort, there is another algorithm called **Insertion Sort** where we take an element, finds its place in the sublist indexed from beginning to its position, and insert it there. Of course, it the elements place is somewhere before its position, all the element from the new position to the current index of the element has to shited one place to the right, and then we can insert the element to its appropriate position. That is why its called Insertion Sort.
+
+```python
+import random
+
+def insertionSort(myList):
+	n = len(myList)
+	i=1
+	while i<n:
+		x = myList[i]
+		j = i-1
+		while (j>=0 and myList[j]>x):
+			myList[j+1] = myList[j]
+			j = j-1
+		myList[j+1] = x
+		i = i+1
+
+	return myList
+
+
+if __name__=="__main__":
+	num_elements = random.randint(1,101)
+	myList = random.sample(range(num_elements),num_elements);
+
+	print("The un-sorted array is :")
+	print(myList)
+	myList = insertionSort(myList)
+	print("The sorted array is :")
+	print(myList)
+```
 
 ## Project 1:  
 **Project 1** mainly consists of two classes, namely  

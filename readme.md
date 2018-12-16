@@ -13,7 +13,7 @@ Any algorithm course starts with the theoritical definitions of Growth of Functi
 
 One important thing to keep in mind as a student is the following sequencee. While analyzing algorithms, this would provide a shorter path to arrange the given growth rates from slowest to faster (although at time it will fail, so you need to use *Limit Rule* to verify).
 
-*Constant << Logarithmic << Polynomial<Exponential << Factorial << n power n*  
+*Constant << Logarithmic << Polynomial << Exponential << Factorial << n power n*  
   
 The above order of functions show the relative order of function in increasing order of complexity. It is, however, by no means a definitive indicator that any functions should follow the given order.
 
@@ -331,7 +331,7 @@ def countingSort(myList,max_val):
 	# the important consideration here is that the values in the array myList are
 	# .. from 0 and some know highest value
 	return_list = [0]*(len(myList)+1)
-	counting_list = [0]*max_val
+	counting_list = [0]*(max_val+1)
 
 	for i in myList:
 		# increase the index corresponding to value in myList
@@ -350,17 +350,60 @@ def countingSort(myList,max_val):
 
 if __name__=="__main__":
 	num_elements = random.randint(0,101)
-	myList = random.sample(range(num_elements),num_elements);
+	max_val = num_elements-1
+	myList = random.sample(range(max_val+1),num_elements);
 
 	print("The un-sorted array is :")
 	print(myList)
-	myList = countingSort(myList,num_elements)
+	myList = countingSort(myList,max_val)
 	print("The sorted array is :")
 	print(myList)
 ```
 Another in the sequence is **Radix Sort**. In radix sort the idea is that you look at the lowest digit (or bit) position, and arrange the numbers based on the order of those digits. Then, go to one position to left and order by that position and so on until you reach the most significant position (or bit).
 
-The number of bit positions is bounded by the largest number we have in the array. One idea will be to take log of the number and perform for that many positions, another approach will be to divide the maximum number by 10 (or the base) each time, and continue until the number is greater than 0. Following implementation will make the concept more clear.
+The number of bit positions is bounded by the largest number we have in the array. One idea will be to take log of the number and perform for that many positions, another approach will be to divide the maximum number by 10 (or the base) each time, and continue until the number is greater than 0. Following implementation will make the concept more clear. Implementation wise, we are going to make use of **Counting Sort** for sorting the numbers based on their positions in iterative way going through all the digit positions.
+
+```python
+import random
+def countingSort(myList,pos):	# pos gives the positinal info which we should sort by
+	# the important consideration here is that the values in the array myList are
+	# .. from 0 and some know highest value
+	return_list = [0]*(len(myList)+1)
+	counting_list = [0]*(10)
+
+	for i in myList:
+		# increase the index corresponding to value in myList
+		counting_list[(i//pos)%10]+=1
+
+	# print(counting_list)
+	# find cumulative sum of  the array elements
+	for i in range(1,len(counting_list)):
+		counting_list[i] += counting_list[i-1]
+
+	# print(counting_list)
+	for i in myList[::-1]:
+		return_list[counting_list[(i//pos)%10]] = i
+		counting_list[(i//pos)%10] -= 1
+	return return_list[1:]
+
+def radixSort(myList,max_val):
+	pos = 1
+	while (max_val//pos)>0:
+		myList = countingSort(myList,pos)
+		pos *= 10
+	return myList
+
+if __name__=="__main__":
+	num_elements = random.randint(0,101)
+	max_val = num_elements-1
+	myList = random.sample(range(max_val+1),num_elements);
+
+	print("The un-sorted array is :")
+	print(myList)
+	myList = radixSort(myList,max_val)
+	print("The sorted array is :")
+	print(myList)
+```
 
 ## Project 1:  
 **Project 1** mainly consists of two classes, namely  

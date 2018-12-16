@@ -259,9 +259,9 @@ if __name__=="__main__":
 	print(myList)
 ```
 
-### MergeSort
+### IV: 
 
-Mergesort works in the concept that we already have sorted lists or arrays, and our task is to merge these two arrays into one. How to find these two in a completely unsorted list of numbers the tricky part here. So the algorithm goes down to dividing the array so that we have a single element in each individual list, merge two of them, and merge two such obtained arrays and so on until we operate with all of them.
+**Mergesort** works in the concept that we already have sorted lists or arrays, and our task is to merge these two arrays into one. How to find these two in a completely unsorted list of numbers the tricky part here. So the algorithm goes down to dividing the array so that we have a single element in each individual list, merge two of them, and merge two such obtained arrays and so on until we operate with all of them.
 
 ```python
 import random
@@ -320,7 +320,47 @@ if __name__=="__main__":
 ```
 Both Quicksort and mergesort are O(nlogn) algorithm, but since mergesort is not in place algorithm, Quicksort is preferred more than Mergesort.
 
+### V
 
+Sorting algorithms that follows are now non-comparison based algorithms. I will mention about three such algorithms. 
+The first in the lot is **Counting Sort**. Here basically what we do is count the number of elements present in the array with a particular value, and based on this we rearrange them in increasing order. For this the counting array is used that increases the count-value in it based on the value of the array detected. This means: if value in array to be sorted is 3, we increase the count value in counting array at index 3 by 1. Following presents the implementation of counting sort.
+
+```python
+import random
+def countingSort(myList,max_val):
+	# the important consideration here is that the values in the array myList are
+	# .. from 0 and some know highest value
+	return_list = [0]*(len(myList)+1)
+	counting_list = [0]*max_val
+
+	for i in myList:
+		# increase the index corresponding to value in myList
+		counting_list[i]+=1
+
+	# print(counting_list)
+	# find cumulative sum of  the array elements
+	for i in range(1,len(counting_list)):
+		counting_list[i] += counting_list[i-1]
+
+	# print(counting_list)
+	for i in myList[::-1]:
+		return_list[counting_list[i]] = i
+		counting_list[i] -= 1
+	return return_list[1:]
+
+if __name__=="__main__":
+	num_elements = random.randint(0,101)
+	myList = random.sample(range(num_elements),num_elements);
+
+	print("The un-sorted array is :")
+	print(myList)
+	myList = countingSort(myList,num_elements)
+	print("The sorted array is :")
+	print(myList)
+```
+Another in the sequence is **Radix Sort**. In radix sort the idea is that you look at the lowest digit (or bit) position, and arrange the numbers based on the order of those digits. Then, go to one position to left and order by that position and so on until you reach the most significant position (or bit).
+
+The number of bit positions is bounded by the largest number we have in the array. One idea will be to take log of the number and perform for that many positions, another approach will be to divide the maximum number by 10 (or the base) each time, and continue until the number is greater than 0. Following implementation will make the concept more clear.
 
 ## Project 1:  
 **Project 1** mainly consists of two classes, namely  
